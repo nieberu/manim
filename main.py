@@ -333,8 +333,82 @@ class Parabola(GraphScene):
         ############################################################################
 
 
+class Parabola3D(ThreeDScene):
+    def construct(self):
+        axes = ThreeDAxes()
+        # sphere = ParametricSurface(
+        #     lambda u, v: np.array([
+        #         u,
+        #         v,
+        #         -u**2 - v**2
+        #     ]), v_min=-4, v_max=4, u_min=-4, u_max=4, checkerboard_colors=[RED_D, RED_A],
+        #     resolution=(15, 32))
+
+        below1 = ParametricFunction(
+            lambda v: np.array([
+                0,  # -v, -v**2, 0 gives horizontal perpendicularity
+                -v,
+                (-v)*(v) - 2  # This set up gives expected perpendicularity
+            ]), color=RED, t_min=-4, t_max=4, )
+        origin1 = ParametricFunction(
+            lambda v: np.array([
+                0,  # -v, -v**2, 0 gives horizontal perpendicularity
+                -(v),
+                (-v)*(v) # This set up gives expected perpendicularity
+            ]), color=RED, t_min=-4, t_max=4, )
+        above1 = ParametricFunction(
+            lambda v: np.array([
+                0,  # -v, -v**2, 0 gives horizontal perpendicularity
+                -(v),
+                (-v)*(v) + 2 # This set up gives expected perpendicularity
+            ]), color=RED, t_min=-4, t_max=4, )
+
+        below2 = ParametricFunction(
+            lambda v: np.array([
+                v,
+                0,
+                v**2 - 2
+            ]), color=BLUE, t_min=-3, t_max=3,)
+        origin2 = ParametricFunction(
+            lambda v: np.array([
+                v,
+                0,
+                v ** 2
+            ]), color=BLUE, t_min=-3, t_max=3, )
+        above2 = ParametricFunction(
+            lambda v: np.array([
+                v,
+                0,
+                v ** 2 + 2
+            ]), color=BLUE, t_min=-3, t_max=3, )
+
+        self.add(axes)
+        ############################ Portion of Function3D
+        self.set_camera_orientation(phi=80 * DEGREES, theta=5 * DEGREES, distance=1000)
+        self.begin_ambient_camera_rotation(rate=0.4)
+        self.play(ShowCreation(below2), ShowCreation(below1), ShowCreation(p))
+        self.wait(3)
+        self.stop_ambient_camera_rotation()
+        self.wait(1)
+        self.play(ReplacementTransform(below2, origin2), ReplacementTransform(below1, origin1))
+        self.wait(1)
+        self.begin_ambient_camera_rotation(rate=0.4)
+        self.wait(3)
+        self.stop_ambient_camera_rotation()
+        self.wait(1)
+        self.play(ReplacementTransform(origin2, above2), ReplacementTransform(origin1, above1))
+        self.wait(1)
+        self.begin_ambient_camera_rotation(rate=0.4)
+        ############################## Portion of CubicFunction
+        # self.set_camera_orientation(phi=86 * DEGREES, theta=5 * DEGREES)
+        # self.begin_ambient_camera_rotation(rate=0.4)
+        # self.play(ShowCreation(cubic))
+        self.wait(5)
+        ############################## Portion of Hyperbola Function3D2
+
+
 if __name__ == "__main__":
     module_name = os.path.basename(__file__)
     command_A = "manim -m --video_dir ~/Desktop/  "
-    command_B = module_name + " " + "Parabola -p"
+    command_B = module_name + " " + "Parabola3D -p"
     os.system(command_A + command_B)
