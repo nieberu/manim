@@ -181,17 +181,17 @@ class Parabola(GraphScene):
 
         # Text for roots on graph
         root1 = TextMobject("{\\tiny -3}")
-        root1.move_to(self.coords_to_point(-3, 0), UP*2)
+        root1.move_to(self.coords_to_point(-3, 0), UP * 2)
 
         root2 = TextMobject("{\\tiny 0}")
-        root2.move_to(self.coords_to_point(0, 0), UP*2)
+        root2.move_to(self.coords_to_point(0, 0), UP * 2)
 
         root3 = TextMobject("{\\tiny 3}")
-        root3.move_to(self.coords_to_point(3, 0), UP*2)
+        root3.move_to(self.coords_to_point(3, 0), UP * 2)
 
         # Descriptive text definition
         describe1 = TextMobject("The equation has two distinct real roots")
-        describe1.to_edge(DOWN+LEFT)
+        describe1.to_edge(DOWN + LEFT)
 
         describe2 = TextMobject("The equation has two equal real roots")
         describe2.to_edge(DOWN + LEFT)
@@ -237,101 +237,6 @@ class Parabola(GraphScene):
         self.play(ReplacementTransform(graph2, graph3), ReplacementTransform(equation2, equation3),
                   ReplacementTransform(describe2, describe3), run_time=4)
 
-        ########################################################################
-        # Creating an array of equations an including partial equations
-        # equations = []
-        # equations.append(self.get_graph(lambda x: x ** 2 - 6,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 - 5,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 - 4,
-        #                        color=GREEN,
-        #                        x_min=-4,
-        #                        x_max=4
-        #                        ))
-        # equations.append(self.get_graph(lambda x: x ** 2 - 3,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 - 2,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 - 1,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 + 1,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 + 2,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 + 3,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 + 4,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 + 5,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        # equations.append(self.get_graph(lambda x: x ** 2 + 6,
-        #                                 color=GREEN,
-        #                                 x_min=-4,
-        #                                 x_max=4
-        #                                 ))
-        #
-        # # Defining arrays for dots
-        # dots = [-2.4494, -2.2360, -2, -1.7320, -1.4142, -1, 0]
-        # dots_back = [2.4494, 2.2360, 2, 1.7320, 1.4142, 1, 0]
-        # # graph = self.get_graph(lambda x: x ** 2,
-        # #                        color=GREEN,
-        # #                        x_min=-4,
-        # #                        x_max=4
-        # #                        )
-        # p = Dot().move_to(self.coords_to_point(dots[0], 0))
-        # p2 = Dot().move_to(self.coords_to_point(dots_back[0], 0))
-        # self.play(ShowCreation(equations[0]), Write(p), Write(p2))
-        # self.wait()
-        # # self.remove(equations[0])
-        # for i in range(len(equations) - 1):
-        #     self.remove(p, p2)
-        #     # Here we try to define the points after each transform to create a uniform movement
-        #     if i < len(equations)/2 and i+1 < len(dots):
-        #         p = Dot().move_to(self.coords_to_point(dots[i], 0))
-        #         pnext = Dot().move_to(self.coords_to_point(dots[i+1], 0))
-        #         p2 = Dot().move_to(self.coords_to_point(dots_back[i], 0))
-        #         p2next = Dot().move_to(self.coords_to_point(dots_back[i + 1], 0))
-        #     self.play(ReplacementTransform(equations[i], equations[i+1]), ReplacementTransform(p, pnext), ReplacementTransform(p2, p2next), run_time=2)
-        #     self.remove(p, pnext, p2, p2next)
-        # self.play(ReplacementTransform(equations[len(equations)-1], equations[len(equations)-2]))
-        ############################################################################
-
 
 class Parabola3D(ThreeDScene):
     def construct(self):
@@ -348,27 +253,27 @@ class Parabola3D(ThreeDScene):
             lambda v: np.array([
                 0,  # -v, -v**2, 0 gives horizontal perpendicularity
                 -v,
-                (-v)*(v) - 2  # This set up gives expected perpendicularity
+                (-v) * (v) - 2  # This set up gives expected perpendicularity
             ]), color=RED, t_min=-4, t_max=4, )
         origin1 = ParametricFunction(
             lambda v: np.array([
                 0,  # -v, -v**2, 0 gives horizontal perpendicularity
                 -(v),
-                (-v)*(v) # This set up gives expected perpendicularity
+                (-v) * (v)  # This set up gives expected perpendicularity
             ]), color=RED, t_min=-4, t_max=4, )
         above1 = ParametricFunction(
             lambda v: np.array([
                 0,  # -v, -v**2, 0 gives horizontal perpendicularity
                 -(v),
-                (-v)*(v) + 2 # This set up gives expected perpendicularity
+                (-v) * (v) + 2  # This set up gives expected perpendicularity
             ]), color=RED, t_min=-4, t_max=4, )
 
         below2 = ParametricFunction(
             lambda v: np.array([
                 v,
                 0,
-                v**2 - 2
-            ]), color=BLUE, t_min=-3, t_max=3,)
+                v ** 2 - 2
+            ]), color=BLUE, t_min=-3, t_max=3, )
         origin2 = ParametricFunction(
             lambda v: np.array([
                 v,
@@ -382,28 +287,93 @@ class Parabola3D(ThreeDScene):
                 v ** 2 + 2
             ]), color=BLUE, t_min=-3, t_max=3, )
 
+        ############################# Roots of the equations
+        root1 = ParametricFunction(
+            lambda v: np.array([
+                1.4142135623731,  # -v, -v**2, 0 gives horizontal perpendicularity
+                0,
+                v  # This set up gives expected perpendicularity
+            ]), color=BLUE, t_min=-0.15, t_max=0.15, )
+        root2 = ParametricFunction(
+            lambda v: np.array([
+                -1.4142135623731,  # -v, -v**2, 0 gives horizontal perpendicularity
+                0,
+                v  # This set up gives expected perpendicularity
+            ]), color=BLUE, t_min=-0.15, t_max=0.15, )
+        root3 = ParametricFunction(
+            lambda v: np.array([
+                0,  # -v, -v**2, 0 gives horizontal perpendicularity
+                v,
+                0  # This set up gives expected perpendicularity
+            ]), color=BLUE, t_min=-0.15, t_max=0.15, )
+
+        root4 = ParametricFunction(
+            lambda v: np.array([
+                0,  # -v, -v**2, 0 gives horizontal perpendicularity
+                1.4142135623731,
+                v  # This set up gives expected perpendicularity
+            ]), color=RED, t_min=-0.15, t_max=0.15, )
+        root5 = ParametricFunction(
+            lambda v: np.array([
+                0,  # -v, -v**2, 0 gives horizontal perpendicularity
+                -1.4142135623731,
+                v  # This set up gives expected perpendicularity
+            ]), color=RED, t_min=-0.15, t_max=0.15, )
+        ############################ Text describing video
+        equation1 = TexMobject("y=x^2 - 2")
+        equation2 = TexMobject("y=x^2")
+        equation3 = TexMobject("y=x^2 + 2")
+
+        equation1.to_edge(UP + LEFT)
+        equation2.to_edge(UP + LEFT)
+        equation3.to_edge(UP + LEFT)
+
+        rootsText = TextMobject("Equation has two")
+        rootsText1 = TextMobject("distinct real roots")
+        rootsText2 = TextMobject("repeating roots")
+        rootsText3 = TextMobject("imaginary roots")
+
+        rootsText.to_edge(UP + LEFT)
+        rootsText1.to_edge(UP + LEFT)
+        rootsText2.to_edge(UP + LEFT)
+        rootsText3.to_edge(UP + LEFT)
+        rootsText.shift(DOWN * 0.7)
+        rootsText1.shift(DOWN * 1.2)
+        rootsText2.shift(DOWN * 1.2)
+        rootsText3.shift(DOWN * 1.2)
+
         self.add(axes)
         ############################ Portion of Function3D
         self.set_camera_orientation(phi=80 * DEGREES, theta=5 * DEGREES, distance=1000)
         self.begin_ambient_camera_rotation(rate=0.4)
-        self.play(ShowCreation(below2), ShowCreation(below1), ShowCreation(p))
+        self.play(ShowCreation(below2), ShowCreation(below1))
+        self.play(ShowCreation(root1), ShowCreation(root2), Write(equation1))
+        self.add_fixed_in_frame_mobjects(rootsText, equation1, rootsText1)
+        self.wait(3)
+        self.remove(root1, root2, rootsText1, equation1)
+        self.stop_ambient_camera_rotation()
+        self.wait(1)
+        self.play(ReplacementTransform(below2, origin2), ReplacementTransform(below1, origin1),
+                  ReplacementTransform(equation1, equation2))
+        self.add_fixed_in_frame_mobjects(rootsText2, equation2)
+        self.wait(1)
+        self.begin_ambient_camera_rotation(rate=0.4)
+        self.play(ShowCreation(root3))
         self.wait(3)
         self.stop_ambient_camera_rotation()
         self.wait(1)
-        self.play(ReplacementTransform(below2, origin2), ReplacementTransform(below1, origin1))
+        self.remove(root3, rootsText2, equation2)
+        self.play(ReplacementTransform(origin2, above2), ReplacementTransform(origin1, above1),
+                  ReplacementTransform(equation2, equation3))
+        self.add_fixed_in_frame_mobjects(rootsText3, equation3)
         self.wait(1)
+        self.play(ShowCreation(root4), ShowCreation(root5))
         self.begin_ambient_camera_rotation(rate=0.4)
-        self.wait(3)
-        self.stop_ambient_camera_rotation()
-        self.wait(1)
-        self.play(ReplacementTransform(origin2, above2), ReplacementTransform(origin1, above1))
-        self.wait(1)
-        self.begin_ambient_camera_rotation(rate=0.4)
+        self.wait(5)
         ############################## Portion of CubicFunction
         # self.set_camera_orientation(phi=86 * DEGREES, theta=5 * DEGREES)
         # self.begin_ambient_camera_rotation(rate=0.4)
         # self.play(ShowCreation(cubic))
-        self.wait(5)
         ############################## Portion of Hyperbola Function3D2
 
 
