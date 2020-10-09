@@ -11,3 +11,5 @@ file 'C:/Users/Jordan Simo/Desktop/manim/~/Desktop/main/720p30/partial_movie_fil
 file 'C:/Users/Jordan Simo/Desktop/manim/~/Desktop/main/720p30/partial_movie_files/Parabola3D/00010.mp4'
 file 'C:/Users/Jordan Simo/Desktop/manim/~/Desktop/main/720p30/partial_movie_files/Parabola3D/00011.mp4'
 file 'C:/Users/Jordan Simo/Desktop/manim/~/Desktop/main/720p30/partial_movie_files/Parabola3D/00012.mp4'
+file 'C:/Users/Jordan Simo/Desktop/manim/~/Desktop/main/720p30/partial_movie_files/Parabola3D/00013.mp4'
+file 'C:/Users/Jordan Simo/Desktop/manim/~/Desktop/main/720p30/partial_movie_files/Parabola3D/00014.mp4'

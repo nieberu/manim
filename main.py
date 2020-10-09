@@ -290,35 +290,42 @@ class Parabola3D(ThreeDScene):
         ############################# Roots of the equations
         root1 = ParametricFunction(
             lambda v: np.array([
-                1.4142135623731,  # -v, -v**2, 0 gives horizontal perpendicularity
+                1.4142135623731 + 0.05 * np.cos(v),
                 0,
-                v  # This set up gives expected perpendicularity
-            ]), color=BLUE, t_min=-0.15, t_max=0.15, )
+                0.05 * np.sin(v)
+            ]), color=BLUE, t_min=-PI, t_max=PI, )
         root2 = ParametricFunction(
             lambda v: np.array([
-                -1.4142135623731,  # -v, -v**2, 0 gives horizontal perpendicularity
+                -1.4142135623731 + 0.05 * np.cos(v),
                 0,
-                v  # This set up gives expected perpendicularity
-            ]), color=BLUE, t_min=-0.15, t_max=0.15, )
+                0.05 * np.sin(v)
+            ]), color=BLUE, t_min=-PI, t_max=PI, )
         root3 = ParametricFunction(
             lambda v: np.array([
-                0,  # -v, -v**2, 0 gives horizontal perpendicularity
-                v,
-                0  # This set up gives expected perpendicularity
-            ]), color=BLUE, t_min=-0.15, t_max=0.15, )
+                0.05 * np.cos(v),
+                0,
+                0.05 * np.sin(v)
+            ]), color=BLUE, t_min=-PI, t_max=PI, )
 
         root4 = ParametricFunction(
             lambda v: np.array([
-                0,  # -v, -v**2, 0 gives horizontal perpendicularity
-                1.4142135623731,
-                v  # This set up gives expected perpendicularity
-            ]), color=RED, t_min=-0.15, t_max=0.15, )
+                0,
+                1.4142135623731 + 0.05 * np.cos(v),
+                0.05 * np.sin(v)
+            ]), color=RED, t_min=-PI, t_max=PI, )
         root5 = ParametricFunction(
             lambda v: np.array([
-                0,  # -v, -v**2, 0 gives horizontal perpendicularity
-                -1.4142135623731,
-                v  # This set up gives expected perpendicularity
-            ]), color=RED, t_min=-0.15, t_max=0.15, )
+                0,
+                -1.4142135623731 + 0.05 * np.cos(v),
+                0.05 * np.sin(v)
+            ]), color=RED, t_min=-PI, t_max=PI, )
+
+        circle = ParametricFunction(
+            lambda v: np.array([
+                1.4142135623731 + 0.05 * np.cos(v),
+                0,
+                0.05 * np.sin(v)
+            ]), color=RED, t_min=-PI, t_max=PI, )
         ############################ Text describing video
         equation1 = TexMobject("y=x^2 - 2")
         equation2 = TexMobject("y=x^2")
@@ -342,9 +349,9 @@ class Parabola3D(ThreeDScene):
         rootsText2.shift(DOWN * 1.2)
         rootsText3.shift(DOWN * 1.2)
 
-        self.add(axes)
+        self.play(ShowCreation(axes))
         ############################ Portion of Function3D
-        self.set_camera_orientation(phi=80 * DEGREES, theta=5 * DEGREES, distance=1000)
+        self.move_camera(phi=80 * DEGREES, theta=5 * DEGREES, distance=1000)
         self.begin_ambient_camera_rotation(rate=0.4)
         self.play(ShowCreation(below2), ShowCreation(below1))
         self.play(ShowCreation(root1), ShowCreation(root2), Write(equation1))
