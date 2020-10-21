@@ -251,58 +251,58 @@ class Parabola3D(ThreeDScene):
 
         below1 = ParametricFunction(
             lambda v: np.array([
-                0,  # -v, -v**2, 0 gives horizontal perpendicularity
-                -v,
-                (-v) * (v) - 2  # This set up gives expected perpendicularity
-            ]), color=RED, t_min=-4, t_max=4, )
+                2.5,
+                v,
+                -v**2 + 5*v - 8.5  # This set up gives expected perpendicularity
+            ]), color=YELLOW, t_min=-10, t_max=10, )
         origin1 = ParametricFunction(
             lambda v: np.array([
-                0,  # -v, -v**2, 0 gives horizontal perpendicularity
-                -(v),
-                (-v) * (v)  # This set up gives expected perpendicularity
-            ]), color=RED, t_min=-4, t_max=4, )
+                2.5,
+                v,
+                -v**2 + 5*v - 6.25     # This set up gives expected perpendicularity
+            ]), color=YELLOW, t_min=-10, t_max=10, )
         above1 = ParametricFunction(
             lambda v: np.array([
-                0,  # -v, -v**2, 0 gives horizontal perpendicularity
-                -(v),
-                (-v) * (v) + 2  # This set up gives expected perpendicularity
-            ]), color=RED, t_min=-4, t_max=4, )
+                2.5,
+                v,
+                -v**2 + 5*v - 4  # This set up gives expected perpendicularity
+            ]), color=YELLOW, t_min=-10, t_max=10, )
 
         below2 = ParametricFunction(
             lambda v: np.array([
                 v,
-                0,
-                v ** 2 - 2
-            ]), color=BLUE, t_min=-3, t_max=3, )
+                2.5,
+                v ** 2 - 5*v + 4
+            ]), color=PINK, t_min=-10, t_max=10, )
         origin2 = ParametricFunction(
             lambda v: np.array([
                 v,
-                0,
-                v ** 2
-            ]), color=BLUE, t_min=-3, t_max=3, )
+                2.5,
+                v ** 2 - 5*v + 6.25
+            ]), color=PINK, t_min=-10, t_max=10, )
         above2 = ParametricFunction(
             lambda v: np.array([
                 v,
-                0,
-                v ** 2 + 2
-            ]), color=BLUE, t_min=-3, t_max=3, )
+                2.5,
+                v ** 2 - 5*v + 8.5
+            ]), color=PINK, t_min=-10, t_max=10, )
 
         ############################# Roots of the equations
         root1 = ParametricFunction(
             lambda v: np.array([
-                1.4142135623731 + 0.05 * np.cos(v),
+                1 + 0.05 * np.cos(v),
                 0,
                 0.05 * np.sin(v)
             ]), color=BLUE, t_min=-PI, t_max=PI, )
         root2 = ParametricFunction(
             lambda v: np.array([
-                -1.4142135623731 + 0.05 * np.cos(v),
+                4 + 0.05 * np.cos(v),
                 0,
                 0.05 * np.sin(v)
             ]), color=BLUE, t_min=-PI, t_max=PI, )
         root3 = ParametricFunction(
             lambda v: np.array([
-                0.05 * np.cos(v),
+                2.5 + 0.05 * np.cos(v),
                 0,
                 0.05 * np.sin(v)
             ]), color=BLUE, t_min=-PI, t_max=PI, )
@@ -310,26 +310,20 @@ class Parabola3D(ThreeDScene):
         root4 = ParametricFunction(
             lambda v: np.array([
                 0,
-                1.4142135623731 + 0.05 * np.cos(v),
+                1 + 0.05 * np.cos(v),
                 0.05 * np.sin(v)
-            ]), color=RED, t_min=-PI, t_max=PI, )
+            ]), color=BLUE, t_min=-PI, t_max=PI, )
         root5 = ParametricFunction(
             lambda v: np.array([
                 0,
-                -1.4142135623731 + 0.05 * np.cos(v),
+                4 + 0.05 * np.cos(v),
                 0.05 * np.sin(v)
-            ]), color=RED, t_min=-PI, t_max=PI, )
+            ]), color=BLUE, t_min=-PI, t_max=PI, )
 
-        circle = ParametricFunction(
-            lambda v: np.array([
-                1.4142135623731 + 0.05 * np.cos(v),
-                0,
-                0.05 * np.sin(v)
-            ]), color=RED, t_min=-PI, t_max=PI, )
         ############################ Text describing video
-        equation1 = TexMobject("y=x^2 - 2")
-        equation2 = TexMobject("y=x^2")
-        equation3 = TexMobject("y=x^2 + 2")
+        equation1 = TexMobject("y=x^2 -5x + 4")
+        equation2 = TexMobject("y=x^2 -5x + 6.25")
+        equation3 = TexMobject("y=x^2 -5x + 8.5")
 
         equation1.to_edge(UP + LEFT)
         equation2.to_edge(UP + LEFT)
@@ -349,15 +343,47 @@ class Parabola3D(ThreeDScene):
         rootsText2.shift(DOWN * 1.2)
         rootsText3.shift(DOWN * 1.2)
 
+        ############################ Lines to show roots on axes
+        line1 = ParametricFunction(
+            lambda v: np.array([
+                1,
+                v,
+                0
+            ]), color=BLUE, t_min=0, t_max=2.5, )
+        line2 = ParametricFunction(
+            lambda v: np.array([
+                4,
+                v,
+                0
+            ]), color=BLUE, t_min=0, t_max=2.5, )
+        line3 = ParametricFunction(
+            lambda v: np.array([
+                2.5,
+                v,
+                0
+            ]), color=BLUE, t_min=0, t_max=2.5, )
+        line4 = ParametricFunction(
+            lambda v: np.array([
+                v,
+                4,
+                0
+            ]), color=BLUE, t_min=0, t_max=2.5, )
+        line5 = ParametricFunction(
+            lambda v: np.array([
+                v,
+                1,
+                0
+            ]), color=BLUE, t_min=0, t_max=2.5, )
+
         self.play(ShowCreation(axes))
         ############################ Portion of Function3D
         self.move_camera(phi=80 * DEGREES, theta=5 * DEGREES, distance=1000)
         self.begin_ambient_camera_rotation(rate=0.4)
         self.play(ShowCreation(below2), ShowCreation(below1))
-        self.play(ShowCreation(root1), ShowCreation(root2), Write(equation1))
+        self.play(ShowCreation(root1), ShowCreation(root2), Write(equation1), ShowCreation(line1), ShowCreation(line2))
         self.add_fixed_in_frame_mobjects(rootsText, equation1, rootsText1)
         self.wait(3)
-        self.remove(root1, root2, rootsText1, equation1)
+        self.remove(root1, root2, rootsText1, equation1, line1, line2)
         self.stop_ambient_camera_rotation()
         self.wait(1)
         self.play(ReplacementTransform(below2, origin2), ReplacementTransform(below1, origin1),
@@ -365,18 +391,18 @@ class Parabola3D(ThreeDScene):
         self.add_fixed_in_frame_mobjects(rootsText2, equation2)
         self.wait(1)
         self.begin_ambient_camera_rotation(rate=0.4)
-        self.play(ShowCreation(root3))
+        self.play(ShowCreation(root3), ShowCreation(line3))
         self.wait(3)
         self.stop_ambient_camera_rotation()
         self.wait(1)
-        self.remove(root3, rootsText2, equation2)
+        self.remove(root3, rootsText2, equation2, line3)
         self.play(ReplacementTransform(origin2, above2), ReplacementTransform(origin1, above1),
                   ReplacementTransform(equation2, equation3))
         self.add_fixed_in_frame_mobjects(rootsText3, equation3)
         self.wait(1)
-        self.play(ShowCreation(root4), ShowCreation(root5))
+        self.play(ShowCreation(root4), ShowCreation(root5), ShowCreation(line4), ShowCreation(line5))
         self.begin_ambient_camera_rotation(rate=0.4)
-        self.wait(5)
+        self.wait(30)
         ############################## Portion of CubicFunction
         # self.set_camera_orientation(phi=86 * DEGREES, theta=5 * DEGREES)
         # self.begin_ambient_camera_rotation(rate=0.4)
